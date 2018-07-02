@@ -1,9 +1,12 @@
 import { Firebase, FirebaseRef } from '../lib/firebase';
 import axios from 'axios';
+import { Permissions, Notifications } from 'expo';
 
-const url = "https://mcsdem012918-mcsdem012918.mobileenv.us2.oraclecloud.com:443";
+const PUSH_ENDPOINT = 'https://your-server.com/users/push-token';
+
+const url = "https://mcsdem032018-mcsdem032018.mobileenv.us2.oraclecloud.com:443";
 const aToken = "Basic YW15Lm1hcmxpbjpNb2JpbGUxKg==";
-const backID = "4c02156e-27fa-4da6-a3fa-9f0dd3063b37";
+const backID = "93c27511-29b5-4bef-9a44-fdb69a0bb490";
 
 /**
   * Get this User's Favourite Recipes
@@ -110,8 +113,9 @@ export function getRecipes() {
         .post(recipesUrl,{'userId':'amy.marlin'} ,auth)
         .then(function (response) {
           var c = 0;
-          const recipes2 = response.data;
-          const recipeList = [];
+          var recipes2 = response.data;
+          //console.log(recipes2);
+          var recipeList = [];
           recipes2.forEach((recipe2)=>{
             c++;
             var newRecipe = {
@@ -122,7 +126,10 @@ export function getRecipes() {
               title: recipe2.title,
               image: recipe2.image_url,
               ingredients:recipe2.ingredients.split("#"),
-              method:recipe2.instruction.split("#")
+              method:recipe2.instruction.split("#"),
+              yield:recipe2.Yield.split("(")[0],
+              time:recipe2["Total Time"],
+              diff:recipe2.Difficulty,
             };
             recipeList.push(newRecipe);
           });
@@ -132,3 +139,21 @@ export function getRecipes() {
           }));
         }).catch(reject)).catch(e => console.log(e));
 }
+
+
+
+//Code for server
+/*var server = http.createServer(function (request, response) {
+  var queryData = url.parse(request.url, true).query;
+
+  if (queryData.text) {
+    convert('engfemale1', queryData.text, response);
+    response.writeHead(200, {
+      'Content-Type': 'audio/mp3', 
+      'Content-Disposition': 'attachment; filename="tts.mp3"'
+    });
+  } 
+  else {
+    response.end('No text to convert.');
+  }
+}).listen(8080);*/

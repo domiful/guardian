@@ -14,6 +14,8 @@ export default {
 
   tabProps: {
     swipeEnabled: false,
+    activeTintColor:'rgba(255,255,155)',
+    inactiveTintColor:'rgba(255,255,255)',
     activeBackgroundColor: 'rgba(255,255,255,0.2)',
     inactiveBackgroundColor: Colors.brandPrimary,
     tabBarStyle: { backgroundColor: Colors.brandPrimary },

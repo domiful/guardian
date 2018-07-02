@@ -1,6 +1,5 @@
 {
-  "name": "rnsk",
-  "homepage": "http://react-boilerplate.mcnam.ee/",
+  "name": "ProspectFinder",
   "version": "0.1.0",
   "private": true,
   "devDependencies": {
@@ -65,10 +64,14 @@
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
     "react-native": "https://github.com/expo/react-native/archive/sdk-25.0.0.tar.gz",
+    "react-native-communications": "^2.2.1",
     "react-native-elements": "^0.19.0",
+    "react-native-maps": "^0.21.0",
+    "react-native-pathjs-charts": "0.0.34",
     "react-native-router-flux": "^4.0.0-beta.24",
     "react-native-search-bar": "^3.4.0",
-    "react-native-svg-charts": "^4.2.0",
+    "react-native-svg": "^6.3.1",
+    "react-native-svg-charts": "^5.0.0",
     "react-redux": "^5.0.6",
     "react-router-dom": "^4.2.2",
     "reactstrap": "^5.0.0-alpha.4",

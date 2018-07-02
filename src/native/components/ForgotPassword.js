@@ -55,15 +55,15 @@ class ForgotPassword extends React.Component {
       <Container>
         <Content padder>
           <Header
-            title="Reset your Password"
-            content="No stress, no stress. We'll get you back into your account."
+            title="Support"
+            content="Don't stress. We can help."
           />
 
           {error && <Messages message={error} />}
 
           <Form>
             <Item stackedLabel>
-              <Label>Email</Label>
+              <Label>Support Message</Label>
               <Input
                 autoCapitalize="none"
                 value={this.state.email}
@@ -74,7 +74,7 @@ class ForgotPassword extends React.Component {
 
             <Spacer size={20} />
 
-            <Button block onPress={this.handleSubmit}><Text>Reset Password</Text></Button>
+            <Button block onPress={this.handleSubmit}><Text>Send</Text></Button>
           </Form>
         </Content>
       </Container>

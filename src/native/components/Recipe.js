@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Image } from 'react-native';
-import { Container, Content, Card, CardItem, Body, H3, List, ListItem, Text } from 'native-base';
+import { Container, Content, Card, CardItem, Body, Left, Right, H3, List, ListItem, Text } from 'native-base';
 import ErrorMessages from '../../constants/errors';
 import Error from './Error';
 import Spacer from './Spacer';
@@ -18,6 +18,7 @@ const RecipeView = ({
   let recipe = null;
   if (recipeId && recipes) {
     recipe = recipes.find(item => parseInt(item.id, 10) === parseInt(recipeId, 10));
+    console.log(recipe);
   }
 
   // Recipe not found
@@ -40,7 +41,7 @@ const RecipeView = ({
   return (
     <Container>
       <Content padder>
-        <Image source={{ uri: recipe.image }} style={{ height: 100, width: null, flex: 1 }} />
+        <Image source={{ uri: recipe.image }} style={{ height: 200, width: null, flex: 1 }} />
 
         <Spacer size={25} />
         <H3>{recipe.title}</H3>
@@ -48,13 +49,24 @@ const RecipeView = ({
 
         <Card>
           <CardItem header bordered>
-            <Text>Nutrition</Text>
+            <Text>Description</Text>
           </CardItem>
           <CardItem>
             <Body>
               <Text>{recipe.body}</Text>
             </Body>
           </CardItem>
+          <CardItem>
+              <Left>
+                  <Text>Yield:{"\n"}{recipe.yield}</Text>
+              </Left>
+              <Body>
+                  <Text>Difficulty:{"\n"}{recipe.diff}</Text>
+              </Body>
+              <Right>
+                <Text>Time:{"\n"}{recipe.time}</Text>
+              </Right>
+            </CardItem>
         </Card>
 
         <Card>

@@ -1,2 +1,0 @@
-https://mcsdem012918-mcsdem012918.mobileenv.us2.oraclecloud.com:443/mobile/platform/storage/collections/iot_messages/objects
-https://mcsdem012918-mcsdem012918.mobileenv.us2.oraclecloud.com/mobileui/env/dev/mobilebackend/fcd5bbb0-834f-4c5c-873e-b4c062f1d288/apiconsole/134492b43851123529de4c326acef4ea/endpoints/3

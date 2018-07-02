@@ -26,10 +26,13 @@ class RecipeListing extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      recipesSearch: this.props.recipes
+      recipesSearch: this.props.recipes,
+      token: null,
+      refreshing: false
     };
 
   }
+
   changeText = (e) =>{
     var nrs = [];
 
@@ -37,7 +40,8 @@ class RecipeListing extends React.Component {
         var isIngredient = false;
         e.toUpperCase().split(" ").forEach((i)=>{
           //console.log(r.ingredients);
-          if(r.ingredients.toString().toUpperCase().includes(i.toUpperCase())){
+          if(i==="") isIngredient = true;
+          else if(r.ingredients.toString().toUpperCase().includes(i.toUpperCase())){
             isIngredient = true;
           }else if(!r.ingredients.toString().toUpperCase().includes(i.toUpperCase())){
             isIngredient=false;
@@ -61,6 +65,17 @@ class RecipeListing extends React.Component {
       this.setState({recipesSearch: this.props.recipes});
     }
 }
+
+_onRefresh() {
+  console.log('aasdadasd');
+  this.setState({refreshing: true},()=>{
+    console.log('r');
+    this.props.reFetch().then(() => {
+      this.setState({refreshing: false});
+    });
+  });
+  
+}
   
 render(){
   // Loading
@@ -74,7 +89,15 @@ render(){
 
   return (
     <Container>
-      <Content padder>
+      <Content 
+      refreshControl={
+        <RefreshControl
+          refreshing={this.state.refreshing}
+          onRefresh={this._onRefresh.bind(this)}
+        />
+      }
+      padder>
+      
       <Spacer size={25} />
       <H1>Recipes</H1>
       <Spacer size={10} />
@@ -119,12 +142,8 @@ render(){
             </Card>
           )}
           keyExtractor={keyExtractor}
-          refreshControl={
-            <RefreshControl
-              refreshing={this.props.loading}
-              onRefresh={this.props.reFetch}
-            />
-          }
+          refreshing={this.state.refreshing}
+          onRefresh={console.log('aasdadasd')}
         />
 
         <Spacer size={20} />

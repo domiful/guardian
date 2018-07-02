@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { View } from 'react-native';
-import { Container, Content, List, ListItem, Body, Left, Text, Icon, H3 } from 'native-base';
+import { Container, Content, List, ListItem, Body, Left,Right, Thumbnail, Text, Icon, H3, H1 } from 'native-base';
 import { Actions } from 'react-native-router-flux';
 import Header from './Header';
 import Spacer from './Spacer';
@@ -40,45 +40,37 @@ const Profile = ({ member, logout }) => (
         :
           <View>
             <Content padder>
-              <Header
-                title="Hi there, Amy"
-                content="where profile photo and info will go"
-              />
+              <H1>
+              Hi there, Amy
+              </H1>
+              <ListItem>
+              <Left style={{marginRight:-100}}>
+                <Thumbnail large source={{ uri: 'https://secure.i.telegraph.co.uk/multimedia/archive/03249/archetypal-female-_3249633c.jpg' }} />
+              </Left>
+              <Body>
+                <Text>Title: Store Manager</Text>
+                <Text note>Employee #: 7145768</Text>
+                <Text note>Last Login: 7:43 am</Text>
+              </Body>
+              </ListItem>
             </Content>
 
             <H3 style={{ paddingLeft: 15 }}>Data Reporting</H3>
-            <ListItem onPress={Actions.login} icon>
-              <Body>
-                <Text>Reports</Text>
-              </Body>
-            </ListItem>
-            <ListItem onPress={Actions.login} icon>
-              <Body>
-                <Text>Graphs</Text>
-              </Body>
-            </ListItem>
-            <ListItem onPress={Actions.signUp} icon>
-              <Body>
-                <Text>Maintenance</Text>
-              </Body>
-            </ListItem>
-            <ListItem onPress={Actions.forgotPassword} icon>
+            <ListItem onPress={Actions.devices} icon>
               <Body>
                 <Text>Data</Text>
               </Body>
             </ListItem>
+            <ListItem onPress={Actions.maint} icon>
+              <Body>
+                <Text>Maintenance</Text>
+              </Body>
+            </ListItem>
+            
 
             <Spacer size={15} />
             <H3 style={{ paddingLeft: 15 }}>Account Settings</H3>
 
-            <ListItem onPress={Actions.signUp} icon>
-              <Left>
-                <Icon name="add-circle" />
-              </Left>
-              <Body>
-                <Text>Add Friend</Text>
-              </Body>
-            </ListItem>
             <ListItem onPress={Actions.signUp} icon>
               <Left>
                 <Icon name="add-circle" />

@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
+import {Notifications, Permissions} from 'expo';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
-import { getRecipes, getMeals, setError } from '../actions/recipes';
+import { getRecipes, getMeals, setError, updateRecipes, registerForPushNotificationsAsync } from '../actions/recipes';
 
 class RecipeListing extends Component {
   static propTypes = {
@@ -16,16 +17,35 @@ class RecipeListing extends Component {
       params: PropTypes.shape({}),
     }),
     getRecipes: PropTypes.func.isRequired,
+    //updateRecipes: PropTypes.func.isRequired,
     getMeals: PropTypes.func.isRequired,
     setError: PropTypes.func.isRequired,
+    registerForPushNotificationsAsync: PropTypes.func.isRequired,
   }
 
   static defaultProps = {
     match: null,
   }
 
+  constructor(props) {
+    super(props);
+    this.state = {
+      notification: null
+    };
+
+  }
+
   componentDidMount = () => this.fetchRecipes();
 
+  componentWillMount(){
+    this.fetchRecipes();
+    //registerForPushNotificationsAsync();
+    //this._notificationSubscription = Notifications.addListener(this._handleNotification);
+  }
+  _handleNotification = (notification) => {
+    this.setState({notification: notification});
+    console.log(notification);
+  };
   /**
     * Fetch Data from API, saving to Redux
     */
@@ -60,8 +80,10 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = {
   getRecipes,
+  updateRecipes,
   getMeals,
   setError,
+  registerForPushNotificationsAsync
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(RecipeListing);

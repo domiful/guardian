@@ -1,15 +1,15 @@
 {
   "expo": {
-    "name": "VitamixApp",
+    "name": "Prospect Finder",
     "icon": "./src/images/app-icon.png",
     "version": "1.0.0",
-    "slug": "VitamixApp",
+    "slug": "Guardian",
     "sdkVersion": "25.0.0",
     "ios": {
-      "bundleIdentifier": "com.oracle.vitamixapp"
+      "bundleIdentifier": "com.oracle.GuardianPF"
     },
     "android": {
-      "package": "com.oracle.vitamixapp"
+      "package": "com.oracle.GuardianPF"
     }
   }
 }

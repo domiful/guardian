@@ -2,6 +2,7 @@ import status from './status';
 import member from './member';
 import recipes from './recipes';
 import blenders from './blenders';
+import devices from './devices';
 
 
 const rehydrated = (state = false, action) => {
@@ -19,4 +20,5 @@ export default {
   member,
   recipes,
   blenders,
+  devices
 };

@@ -61,42 +61,7 @@ class SignUp extends React.Component {
 
           {error && <Messages message={error} />}
 
-          <Form>
-            <Item stackedLabel>
-              <Label>First Name</Label>
-              <Input onChangeText={v => this.handleChange('firstName', v)} />
-            </Item>
-
-            <Item stackedLabel>
-              <Label>Last Name</Label>
-              <Input onChangeText={v => this.handleChange('lastName', v)} />
-            </Item>
-
-            <Item stackedLabel>
-              <Label>Email</Label>
-              <Input
-                autoCapitalize="none"
-                keyboardType="email-address"
-                onChangeText={v => this.handleChange('email', v)}
-              />
-            </Item>
-
-            <Item stackedLabel>
-              <Label>Password</Label>
-              <Input secureTextEntry onChangeText={v => this.handleChange('password', v)} />
-            </Item>
-
-            <Item stackedLabel>
-              <Label>Confirm Password</Label>
-              <Input secureTextEntry onChangeText={v => this.handleChange('password2', v)} />
-            </Item>
-
-            <Spacer size={20} />
-
-            <Button block onPress={this.handleSubmit}>
-              <Text>Sign Up</Text>
-            </Button>
-          </Form>
+          
         </Content>
       </Container>
     );
